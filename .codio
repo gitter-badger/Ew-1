@@ -1,0 +1,7 @@
+{
+ 
+// Preview button configuration
+  "preview": {
+      "EW test": "http://{{domain}}/"
+  }
+}

@@ -1,0 +1,535 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        Edlightened Quiz Screen
+    </title>
+
+    <link href="src/assets/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="AngularJS\angular.min.js"></script>
+    <script src="AngularJS\app\js\timer.js"></script>
+    <script>
+        angular.module('MyApp', ['timer']);
+
+        function MyAppController($scope) {
+            $scope.timerRunning = true;
+            $scope.startTimer = function() {
+                $scope.$broadcast('timer-start');
+                $scope.timerRunning = true;
+            };
+            $scope.stopTimer = function() {
+                $scope.$broadcast('timer-stop');
+                $scope.timerRunning = false;
+            };
+        }
+        MyAppController.$inject = ['$scope'];
+    </script>
+     <!-- Scores to MySQL -->
+     <? php $time='"+scope+"' ; $query="SELECT time, another_field FROM class1 WHERE time = {$score}" ; $query="SELECT time, another_field FROM class1 WHERE time = {$time}" ; ?>
+    <script src="/global.js" type="text/javascript"></script>
+</head>
+
+<body ng-app="MyApp" >
+    <a href="http://edlightened.tk/betaweb/Quizscreen.html">
+        <img class="displayed" src="http://edlightened.tk/images/pic02.jpg" align:left="" alt="alt text" style="border:none;">
+    </a>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="src\assets\js\bootstrap.min.js"></script>
+
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="http://edlightened.tk/betaweb">Home</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="#question10"><b>Last question</b></a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </nav>
+
+    <form action="http://edlightened.tk/betaweb/index.html" method="POST">
+
+        <br>
+         <!-- Floating menu -->
+        <table style="margin-bottom:3px;" align="center">
+            <div class="banner" style="position: fixed; top: 0px; right: 0px;" align="center">
+
+                <div style="background-color:#dddddd;border:1px solid #999999;width:300px;">
+                    <div ng-controller="MyAppController">
+
+                        <b><timer interval="1000">{{hours}} hour{{hoursS}}, {{minutes}} minute{{minutesS}}, {{seconds}} second{{secondsS}}.</timer></b>
+
+                    </div>
+                    <a href="http://wolframalpha.com" <a>Click for Wolfram Alpha</a> 
+                    <br /> 
+                    <a href="http://khanacademy.org" <a>Click for Khan Academy</a>
+                    <div class="content">
+                        <iframe src="http://duckduckgo.com/search.html?width=200&site=wordnik.com&prefill=Search for definitions" style="overflow:hidden;margin:0;padding:0;width:258px;height:40px;" frameborder="0"></iframe>
+
+                    </div>
+                    <div style="padding-top:8px;"></div>
+                </div>
+
+            </div>
+            <tbody>
+                <tr>
+                    <td>
+                        <center>
+
+                        </center>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table style="-moz-border-radius: 12px;margin-bottom:2px;" width="95%" align="center" cellpadding="0" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="hidden" name="origin" value="">
+                        <p>
+                            <br>
+                            <a name="question1">
+                                <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="5" width="100%" bgcolor="#ffa500">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><font size="+1"> <font size="+2" color="black"><b>1.</b></font> 
+                                                                <b>
+                                                                  <?php echo $GLOBAL[q1]; ?>
+                                                                </b> 
+                                                                <br>
+                                                                </font>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <font size="+1">
+<ul>
+     <!-- Questions and Answers here -->
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q1" value="Are You Smarter Than A Fifth Grader?" type="radio" onclick="answerSelected(this);"> Are You Smarter Than A Fifth Grader?</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default;"><input name="q1" value="Oprah" type="radio" onclick="answerSelected(this);"> Oprah</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default;"><input name="q1" value="Jeopardy" type="radio" onclick="answerSelected(this);"> Jeopardy</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default;"><input name="q1" value="20Q" type="radio" onclick="answerSelected(this);"> 20Q</div>
+ </ul>
+</font>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </a>
+                        </p>
+                        <p>
+                            <a name="question1">
+                                <br>
+                            </a>
+                            <a name="question2">
+                                <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="5" width="100%" bgcolor="#ffa500">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><font size="+1"> <font size="+2" color="black"><b>2.</b></font> 
+                                                                <b>  
+                                                                    What company created WATSON?<br>
+</b>
+                                                                </font>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <font size="+1">
+<ul>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q2" value="IBM" type="radio" onclick="answerSelected(this);"> IBM</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q2" value="Dell" type="radio" onclick="answerSelected(this);"> Dell</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q2" value="Nova" type="radio" onclick="answerSelected(this);"> Nova</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q2" value="Advanced Computer Technology" type="radio" onclick="answerSelected(this);"> Advanced Computer Technology</div>
+ </ul>
+</font>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </a>
+                        </p>
+                        <p>
+                            <a name="question2">
+                                <br>
+                            </a>
+                            <a name="question3">
+                                <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="5" width="100%" bgcolor="#ffa500">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><font size="+1"> <font size="+2" color="black"><b>3.</b></font> 
+                                                                <b>                                                         
+                                                                How did WATSON learn?
+                                                                </b>
+                                                                </font>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <font size="+1">
+<ul>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default;"><input name="q3" value="He was put through school" type="radio" onclick="answerSelected(this);"> He was put through school</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q3" value="He read nonfiction books on different subjects" type="radio" onclick="answerSelected(this);"> He read nonfiction books on different subjects</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q3" value="He took standardized tests then was told the correct answer to each question" type="radio" onclick="answerSelected(this);"> He took standardized tests then was told the correct answer to each question</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q3" value="Scientists downloaded documents onto him" type="radio" onclick="answerSelected(this);"> Scientists downloaded documents onto him</div>
+ </ul>
+</font>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </a>
+                        </p>
+                        <p>
+                            <a name="question3">
+                                <br>
+                            </a>
+                            <a name="question4">
+                                <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="5" width="100%" bgcolor="#ffa500">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><font size="+1"> <font size="+2" color="black"><b>4.</b></font> 
+                                                                <b>                                                         
+                                                                    How does WATSON react when presented with a question?
+                                                                    <br>
+</b>
+                                                                </font>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <font size="+1">
+<ul>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default;"><input name="q4a1" value="He catorgorizes it with similar ones" type="radio" onclick="answerSelected(this);"> He catorgorizes it with similar ones</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q4" value="He identifies key words" type="radio" onclick="answerSelected(this);"> He identifies key words</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q4" value="He does a Google search within his data files" type="radio" onclick="answerSelected(this);"> He does a Google search within his data files</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q4" value="He comes up with hundreds of possible answers" type="radio" onclick="answerSelected(this);"> He comes up with hundreds of possible answers</div>
+ </ul>
+</font>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </a>
+                        </p>
+                        <p>
+                            <a name="question4">
+                                <br>
+                            </a>
+                            <a name="question5">
+                                <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="5" width="100%" bgcolor="#ffa500">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><font size="+1"> <font size="+2" color="black"><b>5.</b></font> 
+                                                                <b>                                                         
+                                                                    Who is WATSON named after?
+                                                                    <br>
+</b>
+                                                                </font>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <font size="+1">
+<ul>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default;"><input name="q5" value="Thomas J Watson, IBM's founder" type="radio" onclick="answerSelected(this);"> Thomas J Watson, IBM's founder</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q5" value="James D. Watson, a scientist" type="radio" onclick="answerSelected(this);"> James D. Watson, a scientist</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q5" value="Dr. Watson, Sherlock Holme's assistant" type="radio" onclick="answerSelected(this);"> Dr. Watson, Sherlock Holme's assistant</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q5" value="John B. Watson, a psycologist" type="radio" onclick="answerSelected(this);"> John B. Watson, a psycologist</div>
+ </ul>
+</font>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </a>
+                        </p>
+                        <p>
+                            <a name="question5">
+                                <br>
+                            </a>
+                            <a name="question6">
+                                <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="5" width="100%" bgcolor="#ffa500">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><font size="+1"> <font size="+2" color="black"><b>6.</b></font> 
+                                                                <b>                                               
+                                                                    What program was WATSON part of?
+                                                                </b>
+                                                                </font>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <font size="+1">
+<ul>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q6" value="DeepQA" type="radio" onclick="answerSelected(this);"> DeepQA</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default;"><input name="q6" value="Deep Computing" type="radio" onclick="answerSelected(this);"> Deep Computing</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q6" value="Text Mining" type="radio" onclick="answerSelected(this);"> Text Mining</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q6" value="Language Translation" type="radio" onclick="answerSelected(this);"> Language Translation</div>
+ </ul>
+</font>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </a>
+                        </p>
+                        <p>
+                            <a name="question6">
+                                <br>
+                            </a>
+                            <a name="question7">
+                                <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="5" width="100%" bgcolor="#ffa500">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><font size="+1"> <font size="+2" color="black"><b>7.</b></font> 
+                                                                <b>                                                         
+                                                                How does WATSON get a question?
+                                                                </b>
+                                                                </font>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <font size="+1">
+<ul>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q7" value="He has ears to hear out of" type="radio" onclick="answerSelected(this);"> He has ears to hear out of</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default;"><input name="q7" value="The questions were scanned into him" type="radio" onclick="answerSelected(this);"> The questions were scanned into him</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default;"><input name="q7" value="He read the questions off the screen" type="radio" onclick="answerSelected(this);"> He read the questions off the screen</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default;"><input name="q7" value="In an electronic text" type="radio" onclick="answerSelected(this);"> In an electronic text</div>
+ </ul>
+</font>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </a>
+                        </p>
+                        <p>
+                            <a name="question7">
+                                <br>
+                            </a>
+                            <a name="question8">
+                                <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="5" width="100%" bgcolor="#ffa500">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><font size="+1"> <font size="+2" color="black"><b>8.</b></font> 
+                                                                <b>                                                         
+                                                                How did IBM test WATSON?
+                                                                </b>
+                                                                </font>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <font size="+1">
+<ul>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q8" value="He played against former contestants" type="radio" onclick="answerSelected(this);"> He played against former contestants</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q8" value="He faced the scientists." type="radio" onclick="answerSelected(this);"> He faced the scientists.</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q8" value="Scientists put him on quiz sites (such as test!)" type="radio" onclick="answerSelected(this);"> Scientists put him on quiz sites (such as test!)</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default;"><input name="q8" value="They gave him tons of random questions" type="radio" onclick="answerSelected(this);"> They gave him tons of random questions</div>
+ </ul>
+</font>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </a>
+                        </p>
+                        <p>
+                            <a name="question8">
+                                <br>
+                            </a>
+                            <a name="question9">
+                                <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="5" width="100%" bgcolor="#ffa500">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><font size="+1"> <font size="+2" color="black"><b>9.</b></font> 
+                                                                <b>                                                         
+                                                                How big is WATSON?
+                                                                </b>
+                                                                </font>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <font size="+1">
+<ul>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default; "><input name="q9" value="Human size" type="radio" onclick="answerSelected(this);"> Human size</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default;"><input name="q9" value="Calculator size" type="radio" onclick="answerSelected(this);"> Calculator size</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default;"><input name="q9" value="Normal computer size" type="radio" onclick="answerSelected(this);"> Normal computer size</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default;"><input name="q9" value="Room size." type="radio" onclick="answerSelected(this);"> Room size.</div>
+ </ul>
+</font>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </a>
+                        </p>
+                        <p>
+                            <a name="question9">
+                                <br>
+                            </a>
+                            <a name="question10">
+                                <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="5" width="100%" bgcolor="#ffa500">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><font size="+1"> <font size="+2" color="black"><b>10.</b></font> 
+                                                                <b>                                                         
+                                                                What is the first field WATSON is going to be used in?
+                                                                </b>
+                                                                </font>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <font size="+1">
+<ul>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q10" value="Medicine" type="radio" onclick="answerSelected(this);"> Medicine</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q10" value="Genetics" type="radio" onclick="answerSelected(this);"> Genetics</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q10" value="Law" type="radio" onclick="answerSelected(this);"> Law</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default;"><input name="q10" value="Art" type="radio" onclick="answerSelected(this);"> Art</div>
+ </ul>
+</font>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </a>
+                        </p>
+                        <p>
+                            <a name="question10">
+                                <br>
+                            </a>
+                        </p>
+                        <center>
+                            <a name="question10">
+                                 <!-- Checking test -->
+                                <input type="submit" name="submitanswers" value="Submit my Answers!" onclick="checkTest()">
+                                <script> 
+                                    function checkTest() {
+                                        if($('input[type="radio"][name=q1]:checked').val() == "Jeopardy") {
+                                            count++;
+                                        }
+                                        if($('input[type="radio"][name=q2]:checked').val() == "IBM") {
+                                            count++;
+                                        }
+                                        if($('input[type="radio"][name=q3]:checked').val() == "Scientists downloaded documents onto him") {
+                                            count++;
+                                        }
+                                        if($('input[type="radio"][name=q4]:checked').val() == "He identifies key words") {
+                                            count++;
+                                        }
+                                        if($('input[type="radio"][name=q5]:checked').val() == "Thomas J Watson") {
+                                            count++;
+                                        }
+                                        if($('input[type="radio"][name=q6]:checked').val() == "Deep Computing") {
+                                            count++;
+                                        }
+                                        if($('input[type="radio"][name=q7]:checked').val() == "In an electronic text") {
+                                            count++;
+                                        }
+                                        if($('input[type="radio"][name=q8]:checked').val() == "He played against former contestants") {
+                                            count++;
+                                        }
+                                        if($('input[type="radio"][name=q9]:checked').val() == "Room size.") {
+                                            count++;
+                                        }
+                                        if($('input[type="radio"][name=q10]:checked').val() == "Medicine") {
+                                            count++;
+                                        }
+                                        
+                                            alert("Your score out of ten is " + count);
+                             
+                                    }
+                                    var count = $('#count').val();
+                                </script>
+                                <? php $score='"+count+"' ; $query="SELECT score, another_field FROM class1 WHERE score = {$score}" ; $query="SELECT score, another_field FROM class1 WHERE scope = {$scope}" ; ?>
+                            </a>
+                        </center>
+                        <a name="question10">
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+    </form>
+    <small> Created by Javathunderman and Areashaves</small>
+
+</body>
+
+</html>
+>

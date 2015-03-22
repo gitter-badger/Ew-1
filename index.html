@@ -1,0 +1,64 @@
+<?php
+ 
+   session_start();
+   
+   if (!empty($_GET["error"])) {
+      $ec = $_GET["error"];
+      
+      switch($ec) {
+         case 1:
+            $em = "Incorrect username or password.";
+            break;
+         case 2:
+            $em = "Edlightened's systems are currently experiencing an issue.";
+            break;
+         case 3:
+            $em = "Your account is suspended. Please notify your teacher immediately. ";
+            break;
+      }
+   }
+   
+
+   if (!empty($_GET["lo"])) {
+      $lo = 1;
+   }
+?>
+
+<!DOCTYPE HTML>
+
+<html>
+
+   <head>
+      <title>Login to Edlightened Web</title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <link type="text/css" rel="stylesheet" href="src/css/bootstrap.min.css" />
+      <link type="text/css" rel="stylesheet" href="src/css/bootstrap-theme.min.css" />
+      
+   </head>
+
+   <body>
+      
+      
+            <div class="container">
+
+      <form name="ew_signin" method="post" action="api/doLogin.php">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        <label for="inputUsername" class="sr-only">Username</label>
+        <input type="text" id="inputUsername" class="form-control" placeholder="Username" required="">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+        <div class="checkbox">
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+      </form>
+
+    </div>
+
+
+      <script type="text/javascript" src="src/js/jquery.min.js"></script>
+      <script type="text/javascript" src="src/js/bootstrap.min.js"></script>
+   </body>
+
+</html>

@@ -1,0 +1,528 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+        Edlightened Quiz Screen
+    </title>
+
+    <link href="src/assets/css/bootstrap.min.css" rel="stylesheet">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="AngularJS\angular.min.js"></script>
+    <script src="AngularJS\app\js\timer.js"></script>
+    <script>
+        angular.module('MyApp', ['timer']);
+
+        function MyAppController($scope) {
+            $scope.timerRunning = true;
+            $scope.startTimer = function() {
+                $scope.$broadcast('timer-start');
+                $scope.timerRunning = true;
+            };
+            $scope.stopTimer = function() {
+                $scope.$broadcast('timer-stop');
+                $scope.timerRunning = false;
+            };
+        }
+        MyAppController.$inject = ['$scope'];
+    </script>
+     <? php $time='"+scope+"' ; $query="SELECT time, another_field FROM class1 WHERE time = {$score}" ; $query="SELECT time, another_field FROM class1 WHERE time = {$time}" ; ?>
+    <script src="/global.js" type="text/javascript"></script>
+</head>
+
+<body ng-app="MyApp" >
+    <a href="http://edlightened.tk/betaweb/Quizscreen.html">
+        <img class="displayed" src="http://edlightened.tk/images/pic02.jpg" align:left="" alt="alt text" style="border:none;">
+    </a>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="src\assets\js\bootstrap.min.js"></script>
+
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container-fluid">
+
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Home</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="#question10"><b>Last question</b></a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+    </nav>
+
+    <form action="http://edlightened.tk/betaweb/index.html" method="POST">
+
+        <br>
+        <table style="margin-bottom:3px;" align="center">
+            <div class="banner" style="position: fixed; top: 0px; right: 0px;" align="center">
+
+                <div style="background-color:#dddddd;border:1px solid #999999;width:300px;">
+                    <div ng-controller="MyAppController">
+
+                        <b><timer interval="1000">{{hours}} hour{{hoursS}}, {{minutes}} minute{{minutesS}}, {{seconds}} second{{secondsS}}.</timer></b>
+
+                    </div>
+                    <a href="http://wolframalpha.com" <a>Click for Wolfram Alpha</a> 
+                    <br /> 
+                    <a href="http://khanacademy.org" <a>Click for Khan Academy</a>
+                    <div class="content">
+                        <iframe src="http://duckduckgo.com/search.html?width=200&site=wordnik.com&prefill=Search for definitions" style="overflow:hidden;margin:0;padding:0;width:258px;height:40px;" frameborder="0"></iframe>
+
+                    </div>
+                    <div style="padding-top:8px;"></div>
+                </div>
+
+            </div>
+            <tbody>
+                <tr>
+                    <td>
+                        <center>
+
+                        </center>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table style="-moz-border-radius: 12px;margin-bottom:2px;" width="95%" align="center" cellpadding="0" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td>
+                        <input type="hidden" name="origin" value="">
+                        <p>
+                            <br>
+                            <a name="question1">
+                                <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="5" width="100%" bgcolor="#ffa500">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><font size="+1"> <font size="+2" color="black"><b>1.</b></font> 
+                                                                <b>
+                                                                 What is the first recorded European civilization?
+                                                                </b> 
+                                                                <br>
+                                                                </font>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <font size="+1">
+<ul>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q1" value="Crete" type="radio" onclick="answerSelected(this);">Crete</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default;"><input name="q1" value="Greece" type="radio" onclick="answerSelected(this);"> Greece</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default;"><input name="q1" value="Mycenae" type="radio" onclick="answerSelected(this);"> Mycenae</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default;"><input name="q1" value="England" type="radio" onclick="answerSelected(this);"> England</div>
+ </ul>
+</font>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </a>
+                        </p>
+                        <p>
+                            <a name="question1">
+                                <br>
+                            </a>
+                            <a name="question2">
+                                <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="5" width="100%" bgcolor="#ffa500">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><font size="+1"> <font size="+2" color="black"><b>2.</b></font> 
+                                                                <b>  
+                                                                  What civilization based their number system on the number 60?<br>
+</b>
+                                                                </font>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <font size="+1">
+<ul>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q2" value="Indians" type="radio" onclick="answerSelected(this);"> Indians</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q2" value="Sumerians" type="radio" onclick="answerSelected(this);"> Sumerians</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q2" value="Babylonians" type="radio" onclick="answerSelected(this);"> Babylonians</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q2" value="Assyrians" type="radio" onclick="answerSelected(this);"> Assyrians</div>
+ </ul>
+</font>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </a>
+                        </p>
+                        <p>
+                            <a name="question2">
+                                <br>
+                            </a>
+                            <a name="question3">
+                                <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="5" width="100%" bgcolor="#ffa500">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><font size="+1"> <font size="+2" color="black"><b>3.</b></font> 
+                                                                <b>                                                         
+                                                                What was the birthplace of democracy?
+                                                                </b>
+                                                                </font>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <font size="+1">
+<ul>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default;"><input name="q3" value="Athens" type="radio" onclick="answerSelected(this);">Athens</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q3" value="Sparta" type="radio" onclick="answerSelected(this);">Sparta</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q3" value="Mycenae" type="radio" onclick="answerSelected(this);">Mycenae</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q3" value="Crete" type="radio" onclick="answerSelected(this);">Crete</div>
+ </ul>
+</font>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </a>
+                        </p>
+                        <p>
+                            <a name="question3">
+                                <br>
+                            </a>
+                            <a name="question4">
+                                <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="5" width="100%" bgcolor="#ffa500">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><font size="+1"> <font size="+2" color="black"><b>4.</b></font> 
+                                                                <b>                                                         
+                                                                    Who was the first emperor of China?
+                                                                    <br>
+</b>
+                                                                </font>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <font size="+1">
+<ul>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default;"><input name="q4" value="Shi Huang Di" type="radio" onclick="answerSelected(this);">Shi Huang Di</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q4" value="Confucius" type="radio" onclick="answerSelected(this);">Confucius</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q4" value="Puyi" type="radio" onclick="answerSelected(this);">Puyi</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q4" value="Kublai Khan" type="radio" onclick="answerSelected(this);">Kublai Khan</div>
+ </ul>
+</font>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </a>
+                        </p>
+                        <p>
+                            <a name="question4">
+                                <br>
+                            </a>
+                            <a name="question5">
+                                <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="5" width="100%" bgcolor="#ffa500">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><font size="+1"> <font size="+2" color="black"><b>5.</b></font> 
+                                                                <b>                                                         
+                                                                    Who is the Greek king of gods?
+                                                                    <br>
+</b>
+                                                                </font>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <font size="+1">
+<ul>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default;"><input name="q5" value="Apollo" type="radio" onclick="answerSelected(this);">Apollo</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q5" value="Zeus" type="radio" onclick="answerSelected(this);">Zeus</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q5" value="Hades" type="radio" onclick="answerSelected(this);">Hades</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q5" value="Poseidon" type="radio" onclick="answerSelected(this);">Poseidon</div>
+ </ul>
+</font>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </a>
+                        </p>
+                        <p>
+                            <a name="question5">
+                                <br>
+                            </a>
+                            <a name="question6">
+                                <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="5" width="100%" bgcolor="#ffa500">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><font size="+1"> <font size="+2" color="black"><b>6.</b></font> 
+                                                                <b>                                               
+                                                                    Who was the main aggressor in World War 2?
+                                                                </b>
+                                                                </font>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <font size="+1">
+<ul>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q6" value="Germany" type="radio" onclick="answerSelected(this);">Germany</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default;"><input name="q6" value="Russia" type="radio" onclick="answerSelected(this);">Russia</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q6" value="Italy" type="radio" onclick="answerSelected(this);">Italy</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q6" value="Japan" type="radio" onclick="answerSelected(this);">Japan</div>
+ </ul>
+</font>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </a>
+                        </p>
+                        <p>
+                            <a name="question6">
+                                <br>
+                            </a>
+                            <a name="question7">
+                                <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="5" width="100%" bgcolor="#ffa500">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><font size="+1"> <font size="+2" color="black"><b>7.</b></font> 
+                                                                <b>                                                         
+                                                                Who were the two nations in the Space Race?
+                                                                </b>
+                                                                </font>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <font size="+1">
+<ul>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q7" value="The United Kingdom and the United States" type="radio" onclick="answerSelected(this);">The United Kingdom and the United States</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default;"><input name="q7" value="The Soviet Union and Germany" type="radio" onclick="answerSelected(this);">The Soviet Union and Germany</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default;"><input name="q7" value="India and China" type="radio" onclick="answerSelected(this);">India and China</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default;"><input name="q7" value="The Soviet Union and The United States" type="radio" onclick="answerSelected(this);">The Soviet Union and The United States</div>
+ </ul>
+</font>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </a>
+                        </p>
+                        <p>
+                            <a name="question7">
+                                <br>
+                            </a>
+                            <a name="question8">
+                                <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="5" width="100%" bgcolor="#ffa500">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><font size="+1"> <font size="+2" color="black"><b>8.</b></font> 
+                                                                <b>                                                         
+                                                                What is the currency used by the European Union?
+                                                                </b>
+                                                                </font>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <font size="+1">
+<ul>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q8" value="The pound sterling" type="radio" onclick="answerSelected(this);">The pound sterling</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q8" value="The Euro" type="radio" onclick="answerSelected(this);">The Euro</div>
+
+ </ul>
+</font>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </a>
+                        </p>
+                        <p>
+                            <a name="question8">
+                                <br>
+                            </a>
+                            <a name="question9">
+                                <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="5" width="100%" bgcolor="#ffa500">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><font size="+1"> <font size="+2" color="black"><b>9.</b></font> 
+                                                                <b>                                                         
+                                                                Who made the first paper currency?
+                                                                </b>
+                                                                </font>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <font size="+1">
+<ul>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default; "><input name="q9" value="The United States" type="radio" onclick="answerSelected(this);">The United States</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default;"><input name="q9" value="The United Kingdom" type="radio" onclick="answerSelected(this);">The United Kingdom</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default;"><input name="q9" value="Russia" type="radio" onclick="answerSelected(this);">Russia</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default;"><input name="q9" value="China" type="radio" onclick="answerSelected(this);">China</div>
+ </ul>
+</font>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </a>
+                        </p>
+                        <p>
+                            <a name="question9">
+                                <br>
+                            </a>
+                            <a name="question10">
+                                <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <table cellpadding="5" width="100%" bgcolor="#ffa500">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td><font size="+1"> <font size="+2" color="black"><b>10.</b></font> 
+                                                                <b>                                                         
+                                                                What organization was the original administrator of World Wide Web?
+                                                                </b>
+                                                                </font>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <font size="+1">
+<ul>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q10" value="DARPA" type="radio" onclick="answerSelected(this);">DARPA</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q10" value="CERN" type="radio" onclick="answerSelected(this);">CERN</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);"><input name="q10" value="The UN" type="radio" onclick="answerSelected(this);">The UN</div>
+<div onmouseover="answerOver(this);" onmouseout="answerOut(this);" onclick="selectAnswer(this);" style="cursor: default;"><input name="q10" value="NATO" type="radio" onclick="answerSelected(this);">NATO</div>
+ </ul>
+</font>
+                                            </td>
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </a>
+                        </p>
+                        <p>
+                            <a name="question10">
+                                <br>
+                            </a>
+                        </p>
+                        <center>
+                            <a name="question10">
+                                <input type="submit" name="submitanswers" value="Submit my Answers!" onclick="checkTest()">
+                                <script>
+                                    function checkTest() {
+                                        if($('input[type="radio"][name=q1]:checked').val() == "Crete") {
+                                            count3++;
+                                        }
+                                        if($('input[type="radio"][name=q2]:checked').val() == "Babylonians") {
+                                            count3++;
+                                        }
+                                        if($('input[type="radio"][name=q3]:checked').val() == "Athens") {
+                                            count3++;
+                                        }
+                                        if($('input[type="radio"][name=q4]:checked').val() == "Shi Huang Di") {
+                                            count3++;
+                                        }
+                                        if($('input[type="radio"][name=q5]:checked').val() == "Zeus") {
+                                            count3++;
+                                        }
+                                        if($('input[type="radio"][name=q6]:checked').val() == "Germany") {
+                                            count3++;
+                                        }
+                                        if($('input[type="radio"][name=q7]:checked').val() == "The Soviet Union and The United States") {
+                                            count3++;
+                                        }
+                                        if($('input[type="radio"][name=q8]:checked').val() == "The Euro") {
+                                            count3++;
+                                        }
+                                        if($('input[type="radio"][name=q9]:checked').val() == "China") {
+                                            count3++;
+                                        }
+                                        if($('input[type="radio"][name=q10]:checked').val() == "CERN") {
+                                            count3++;
+                                        }
+                                                                          alert("Your score out of ten is " + count);
+                             
+                                    }
+                                    var count = $('#count').val();
+                                </script>
+                                <? php $score='"+count+"' ; $query="SELECT score, another_field FROM class1 WHERE score = {$score}" ; $query="SELECT score, another_field FROM class1 WHERE scope = {$scope}" ; ?>
+                            </a>
+                        </center>
+                        <a name="question10">
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+
+    </form>
+    <small> Created by Javathunderman </small>
+
+</body>
+
+</html>
