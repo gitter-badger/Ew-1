@@ -15,6 +15,10 @@ Edlightened simply requires an internet connection.
 3. Open source for developers to build on.
 4. Timer for teachers to see how long a student has been on. 
 5. Slick interface
+6. Integration with Wolfram Alpha API
+
+#Planned Features
+Integration with Wordnik API
 
 
 PROJECT STATUS: In development. Beta 2 is out. 
