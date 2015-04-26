@@ -1,3 +1,0 @@
-Fix the PHP call question method...
-Make a new design commit. 
-Fix broken login system, pictures, etc. 
