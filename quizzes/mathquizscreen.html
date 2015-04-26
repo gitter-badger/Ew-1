@@ -12,6 +12,7 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <style type="text/css"></style>
     <script src="AngularJS\angular.min.js"></script>
+    <script src="apis/js-sdk/js/temboo.js">
     <script src="AngularJS\app\js\timer.js"></script>
     <script>
         angular.module('MyApp', ['timer']);
@@ -30,7 +31,7 @@
         MyAppController.$inject = ['$scope'];
     </script>
     <?php $time='"+scope+"' ; $query="SELECT time, another_field FROM class1 WHERE time = {$score}" ; $query="SELECT time, another_field FROM class1 WHERE time = {$time}" ; ?>
-    
+
 </head>
 
 <body ng-app="MyApp" class="ng-scope">
@@ -72,491 +73,556 @@
         <table style="margin-bottom:3px;" align="center">
             <div class="banner" style="position: fixed; top: 0px; right: 0px;" align="center">
 
-            <div style="background-color:#dddddd;border:1px solid #999999;width:300px;">
-                <div ng-controller="MyAppController" class="ng-scope">
+                <div style="background-color:#dddddd;border:1px solid #999999;width:300px;">
+                    <div ng-controller="MyAppController" class="ng-scope">
 
-                    <b><timer interval="1000">{{hours}} hour{{hoursS}}, {{minutes}} minute{{minutesS}}, {{seconds}} second{{secondsS}}.</timer></b>
+                        <b><timer interval="1000">{{hours}} hour{{hoursS}}, {{minutes}} minute{{minutesS}}, {{seconds}} second{{secondsS}}.</timer></b>
 
+                    </div>
+                    <input type="text" id="query" align="center">
+                    <script>
+                        // Instantiate the client proxy
+                         // You may need to adjust the path to reflect the URI of your server proxy
+                        var temboo = new TembooProxy('apis/proxy-server.php');
+                        var ewuserquery = document.getElementById('query');
+                         // Add the query Choreo
+                        var queryChoreo = temboo.addChoreo('jsQuery');
+                         // Add inputs
+                        queryChoreo.setInput('Input', ewuserquery);
+                        queryChoreo.setInput('AppID', 'X8TW3T-T7WKYE8A2G');
+                         // Success callback
+                        var showResult = function(outputs, outputFilters) {
+                            // Display outputs
+                            if(outputFilters) {
+                                // Display named output filters
+                                for(var name in outputFilters) {
+                                    console.log(name + ':');
+                                    for(var item in outputs[name]) {
+                                        console.log('    ' + outputs[name][item]);
+                                    }
+                                }
+                            } else {
+                                // Display raw outputs
+                                for(var name in outputs) {
+                                    console.log(name + ': ' + outputs[name]);
+                                }
+                            }
+                        };
+                         // Error callback
+                        var showError = function(error) {
+                            if(error.type === 'DisallowedInput') {
+                                console.log(error.type + ' error: ' + error.inputName);
+                            } else {
+                                console.log(error.type + ' error: ' + error.message);
+                            }
+                        };
+                         // Run the Choreo, specifying success and error callback handlers
+                        queryChoreo.execute(showResult, showError);
+                    </script>
+                    <br />
+                    <a href="http://khanacademy.org" <a>Click for Khan Academy</a>
+                    <div class="content">
+                        <input type="text" id="wordquery" align="center">
+
+
+                        <script>
+                            // Instantiate the client proxy
+                             // You may need to adjust the path to reflect the URI of your server proxy
+                            var temboo = new TembooProxy('api/word-proxy-server.php');
+                            var ewwordquery = document.getElementById('wordquery');
+                             // Add the getDefinitions Choreo
+                            var getDefinitionsChoreo = temboo.addChoreo('jsGetDefinitions');
+                             // Add inputs
+                            getDefinitionsChoreo.setInput('APIKey', '5e20c0f50c875dbfc952a05b1a20723ce5497366cb5eb71ed');
+                            getDefinitionsChoreo.setInput('Word', wordquery);
+                             // Success callback
+                            var showResult = function(outputs, outputFilters) {
+                                // Display outputs
+                                if(outputFilters) {
+                                    // Display named output filters
+                                    for(var name in outputFilters) {
+                                        console.log(name + ':');
+                                        for(var item in outputs[name]) {
+                                            console.log('    ' + outputs[name][item]);
+                                        }
+                                    }
+                                } else {
+                                    // Display raw outputs
+                                    for(var name in outputs) {
+                                        console.log(name + ': ' + outputs[name]);
+                                    }
+                                }
+                            };
+                             // Error callback
+                            var showError = function(error) {
+                                if(error.type === 'DisallowedInput') {
+                                    console.log(error.type + ' error: ' + error.inputName);
+                                } else {
+                                    console.log(error.type + ' error: ' + error.message);
+                                }
+                            };
+                             // Run the Choreo, specifying success and error callback handlers
+                            getDefinitionsChoreo.execute(showResult, showError);
+                        </script>
+                    </div>
+                    <div style="padding-top:8px;"></div>
                 </div>
-                <a href="http://wolframalpha.com" <a="">Click for Wolfram Alpha</a> 
-                <br>
-                <a href="http://khanacademy.org" <a="">Click for Khan Academy</a>
-                <div class="content">
-                    <iframe src="http://duckduckgo.com/search.html?width=200&amp;site=wordnik.com&amp;prefill=Search for definitions" style="overflow:hidden;margin:0;padding:0;width:258px;height:40px;" frameborder="0"></iframe>
 
-                </div>
-                <div style="padding-top:8px;"></div>
             </div>
-
-        </div>
-        <table style="margin-bottom:3px;" align="center">
+            <table style="margin-bottom:3px;" align="center">
 
 
-        </table>
+            </table>
 
- <table style="-moz-border-radius: 12px;margin-bottom:2px;" width="95%" align="center" cellpadding="0" cellspacing="0">
-            <tbody>
-                <tr>
-                    <td>
-                        <input type="hidden" name="origin" value="">
-                        <p>
-                            <br>
-       
-        <a name="question1">
-            <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+            <table style="-moz-border-radius: 12px;margin-bottom:2px;" width="95%" align="center" cellpadding="0" cellspacing="0">
                 <tbody>
                     <tr>
                         <td>
-                            <table cellpadding="5" width="100%" bgcolor="#ffa500">
-                                <tbody>
-                                    <tr>
-                                        <td><font size="+1"> <font size="+2" color="black"><b>1.</b></font>
-                                            <br>
-                                            <b>
+                            <input type="hidden" name="origin" value="">
+                            <p>
+                                <br>
+
+                                <a name="question1">
+                                    <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <table cellpadding="5" width="100%" bgcolor="#ffa500">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><font size="+1"> <font size="+2" color="black"><b>1.</b></font>
+                                                                    <br>
+                                                                    <b>
                                                                   Solve: 2*2
                                                                 </b> 
-                                            <br>
-                                            <br>
-                                            </font>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <font size="+1">
+                                                                    <br>
+                                                                    <br>
+                                                                    </font>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <font size="+1">
 <ul align="center">
     <input type="text" id="q1" align="center">
                                                     </ul>
 </font>
-                        </td>
+                                                </td>
 
-                    </tr>
-                </tbody>
-            </table>
-        </a>
-        <p></p>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </a>
+                                <p></p>
 
-        <a name="question2">
-            <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
-                <tbody>
-                    <tr>
-                        <td>
-                            <table cellpadding="5" width="100%" bgcolor="#ffa500">
-                                <tbody>
-                                    <tr>
-                                        <td><font size="+1"> <font size="+2" color="black"><b>2.</b></font>
-                                            <br>
-                                            <b>
+                                <a name="question2">
+                                    <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <table cellpadding="5" width="100%" bgcolor="#ffa500">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><font size="+1"> <font size="+2" color="black"><b>2.</b></font>
+                                                                    <br>
+                                                                    <b>
                                                                   Solve: 4*4
                                                                 </b> 
-                                            <br>
-                                            <br>
-                                            </font>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <font size="+1">
+                                                                    <br>
+                                                                    <br>
+                                                                    </font>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <font size="+1">
 <ul align="center">
     <input type="text" id="q2" align="center">
                                                     </ul>
 </font>
-                        </td>
+                                                </td>
 
-                    </tr>
-                </tbody>
-            </table>
-        </a>
-        <p></p>
-
-
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </a>
+                                <p></p>
 
 
 
-        <p></p>
-        <a name="question3">
-            <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
-                <tbody>
-                    <tr>
-                        <td>
-                            <table cellpadding="5" width="100%" bgcolor="#ffa500">
-                                <tbody>
-                                    <tr>
-                                        <td><font size="+1"> <font size="+2" color="black"><b>3.</b></font>
-                                            <br>
-                                            <b>
+
+
+                                <p></p>
+                                <a name="question3">
+                                    <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <table cellpadding="5" width="100%" bgcolor="#ffa500">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><font size="+1"> <font size="+2" color="black"><b>3.</b></font>
+                                                                    <br>
+                                                                    <b>
                                                                   Solve: 8+8
                                                                 </b> 
-                                            <br>
-                                            <br>
-                                            </font>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <font size="+1">
+                                                                    <br>
+                                                                    <br>
+                                                                    </font>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <font size="+1">
 <ul align="center">
     <input type="text" id="q3" align="center">
                                                     </ul>
 </font>
-                        </td>
+                                                </td>
 
-                    </tr>
-                </tbody>
-            </table>
-        </a>
-        <p></p>
-
-
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </a>
+                                <p></p>
 
 
 
-        <p></p>
-        <a name="question4">
-            <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
-                <tbody>
-                    <tr>
-                        <td>
-                            <table cellpadding="5" width="100%" bgcolor="#ffa500">
-                                <tbody>
-                                    <tr>
-                                        <td><font size="+1"> <font size="+2" color="black"><b>4.</b></font>
-                                            <br>
-                                            <b>
+
+
+                                <p></p>
+                                <a name="question4">
+                                    <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <table cellpadding="5" width="100%" bgcolor="#ffa500">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><font size="+1"> <font size="+2" color="black"><b>4.</b></font>
+                                                                    <br>
+                                                                    <b>
                                                                   Solve: 4^3
                                                                 </b> 
-                                            <br>
-                                            <br>
-                                            </font>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <font size="+1">
+                                                                    <br>
+                                                                    <br>
+                                                                    </font>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <font size="+1">
 <ul align="center">
     <input type="text" id="q4" align="center" >
                                                     </ul>
 </font>
-                        </td>
+                                                </td>
 
-                    </tr>
-                </tbody>
-            </table>
-        </a>
-        <p></p>
-
-
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </a>
+                                <p></p>
 
 
 
-        <p></p>
-        <a name="question5">
-            <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
-                <tbody>
-                    <tr>
-                        <td>
-                            <table cellpadding="5" width="100%" bgcolor="#ffa500">
-                                <tbody>
-                                    <tr>
-                                        <td><font size="+1"> <font size="+2" color="black"><b>5.</b></font>
-                                            <br>
-                                            <b>
+
+
+                                <p></p>
+                                <a name="question5">
+                                    <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <table cellpadding="5" width="100%" bgcolor="#ffa500">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><font size="+1"> <font size="+2" color="black"><b>5.</b></font>
+                                                                    <br>
+                                                                    <b>
                                                                   Solve: 5-3
                                                                 </b> 
-                                            <br>
-                                            <br>
-                                            </font>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <font size="+1">
+                                                                    <br>
+                                                                    <br>
+                                                                    </font>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <font size="+1">
 <ul align="center">
     <input type="text" id="q5" align="center">
                                                     </ul>
 </font>
-                        </td>
+                                                </td>
 
-                    </tr>
-                </tbody>
-            </table>
-        </a>
-        <p></p>
-
-
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </a>
+                                <p></p>
 
 
 
-        <p></p>
-        <a name="question6">
-            <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
-                <tbody>
-                    <tr>
-                        <td>
-                            <table cellpadding="5" width="100%" bgcolor="#ffa500">
-                                <tbody>
-                                    <tr>
-                                        <td><font size="+1"> <font size="+2" color="black"><b>6.</b></font>
-                                            <br>
-                                            <b>
+
+
+                                <p></p>
+                                <a name="question6">
+                                    <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <table cellpadding="5" width="100%" bgcolor="#ffa500">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><font size="+1"> <font size="+2" color="black"><b>6.</b></font>
+                                                                    <br>
+                                                                    <b>
                                                                   Solve: 2*6
                                                                 </b> 
-                                            <br>
-                                            <br>
-                                            </font>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <font size="+1">
+                                                                    <br>
+                                                                    <br>
+                                                                    </font>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <font size="+1">
 <ul align="center">
     <input type="text" id="q6" align="center">
                                                     </ul>
 </font>
-                        </td>
+                                                </td>
 
-                    </tr>
-                </tbody>
-            </table>
-        </a>
-        <p></p>
-
-
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </a>
+                                <p></p>
 
 
 
-        <p></p>
-        <a name="question7">
-            <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
-                <tbody>
-                    <tr>
-                        <td>
-                            <table cellpadding="5" width="100%" bgcolor="#ffa500">
-                                <tbody>
-                                    <tr>
-                                        <td><font size="+1"> <font size="+2" color="black"><b>7.</b></font>
-                                            <br>
-                                            <b>
+
+
+                                <p></p>
+                                <a name="question7">
+                                    <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <table cellpadding="5" width="100%" bgcolor="#ffa500">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><font size="+1"> <font size="+2" color="black"><b>7.</b></font>
+                                                                    <br>
+                                                                    <b>
                                                                   Solve: 1*2
                                                                 </b> 
-                                            <br>
-                                            <br>
-                                            </font>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <font size="+1">
+                                                                    <br>
+                                                                    <br>
+                                                                    </font>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <font size="+1">
 <ul align="center">
     <input type="text" id="q7" align="center">
                                                     </ul>
 </font>
-                        </td>
+                                                </td>
 
-                    </tr>
-                </tbody>
-            </table>
-        </a>
-        <p></p>
-
-
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </a>
+                                <p></p>
 
 
 
-        <p></p>
-        <a name="question8">
-            <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
-                <tbody>
-                    <tr>
-                        <td>
-                            <table cellpadding="5" width="100%" bgcolor="#ffa500">
-                                <tbody>
-                                    <tr>
-                                        <td><font size="+1"> <font size="+2" color="black"><b>8.</b></font>
-                                            <br>
-                                            <b>
+
+
+                                <p></p>
+                                <a name="question8">
+                                    <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <table cellpadding="5" width="100%" bgcolor="#ffa500">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><font size="+1"> <font size="+2" color="black"><b>8.</b></font>
+                                                                    <br>
+                                                                    <b>
                                                                   Solve: 2*21
                                                                 </b> 
-                                            <br>
-                                            <br>
-                                            </font>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <font size="+1">
+                                                                    <br>
+                                                                    <br>
+                                                                    </font>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <font size="+1">
 <ul align="center">
     <input type="text" id="q8" align="center">
                                                     </ul>
 </font>
-                        </td>
+                                                </td>
 
-                    </tr>
-                </tbody>
-            </table>
-        </a>
-        <p></p>
-
-
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </a>
+                                <p></p>
 
 
 
-        <p></p>
-        <a name="question9">
-            <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
-                <tbody>
-                    <tr>
-                        <td>
-                            <table cellpadding="5" width="100%" bgcolor="#ffa500">
-                                <tbody>
-                                    <tr>
-                                        <td><font size="+1"> <font size="+2" color="black"><b>9.</b></font>
-                                            <br>
-                                            <b>
+
+
+                                <p></p>
+                                <a name="question9">
+                                    <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <table cellpadding="5" width="100%" bgcolor="#ffa500">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><font size="+1"> <font size="+2" color="black"><b>9.</b></font>
+                                                                    <br>
+                                                                    <b>
                                                                   Solve: 92+8
                                                                 </b> 
-                                            <br>
-                                            <br>
-                                            </font>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <font size="+1">
+                                                                    <br>
+                                                                    <br>
+                                                                    </font>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <font size="+1">
 <ul align="center">
     <input type="text" id="q9" align="center">
                                                     </ul>
 </font>
-                        </td>
+                                                </td>
 
-                    </tr>
-                </tbody>
-            </table>
-        </a>
-        <p></p>
-
-
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </a>
+                                <p></p>
 
 
 
-        <p></p>
 
-        <a name="question10">
-            <br>
-        </a>
-        <a name="question10">
-            <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
-                <tbody>
-                    <tr>
-                        <td>
-                            <table cellpadding="5" width="100%" bgcolor="#ffa500">
-                                <tbody>
-                                    <tr>
-                                        <td><font size="+1"> <font size="+2" color="black"><b>10.</b></font>
-                                            <br>
-                                            <b>
+
+                                <p></p>
+
+                                <a name="question10">
+                                    <br>
+                                </a>
+                                <a name="question10">
+                                    <table width="95%" cellpadding="0" cellspacing="0" align="center" style="border:1px black solid;" bgcolor="white">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <table cellpadding="5" width="100%" bgcolor="#ffa500">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td><font size="+1"> <font size="+2" color="black"><b>10.</b></font>
+                                                                    <br>
+                                                                    <b>
                                                                   Solve ttthis: 200-8
                                                                 </b> 
-                                            <br>
-                                            <br>
-                                            </font>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                            <font size="+1">
+                                                                    <br>
+                                                                    <br>
+                                                                    </font>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                    <font size="+1">
 <ul align="center">
     <input type="text" id="q10" align="center">
                                                     </ul>
 </font>
+                                                </td>
+
+                                            </tr>
+
+                                        </tbody>
+
+                                    </table>
+
+                                </a>
+
+
+                                <p></p>
+                                <center>
+                                    <a name="question10">
+                                        <input type="submit" name="submitanswers" value="Submit my Answers!" onclick="checkTest()">
+
+
+                                        <script>
+                                            function checkTest() {
+                                                var q1 = document.getElementById("q1").value;
+                                                var q2 = document.getElementById("q2").value;
+                                                var q3 = document.getElementById("q3").value;
+                                                var q4 = document.getElementById("q4").value;
+                                                var q5 = document.getElementById("q5").value;
+                                                var q6 = document.getElementById("q6").value;
+                                                var q7 = document.getElementById("q7").value;
+                                                var q8 = document.getElementById("q8").value;
+                                                var q9 = document.getElementById("q9").value;
+                                                var q10 = document.getElementById("q10").value;
+                                                var count2 = 0;
+                                                if(q1 == 4) {
+                                                    count2++;
+                                                }
+                                                if(q2 == 16) {
+                                                    count2++;
+                                                }
+                                                if(q3 == 16) {
+                                                    count2++;
+                                                }
+                                                if(q4 == 64) {
+                                                    count2++;
+                                                }
+                                                if(q5 == 2) {
+                                                    count2++;
+                                                }
+                                                if(q6 == 12) {
+                                                    count2++;
+                                                }
+                                                if(q7 == 2) {
+                                                    count2++;
+                                                }
+                                                if(q8 == 42) {
+                                                    count2++;
+                                                }
+                                                if(q9 == 100) {
+                                                    count2++;
+                                                }
+                                                if(q10 == 192) {
+                                                    count2++;
+                                                }
+                                                alert("Your score out of 10 is: " + count2); //prints score
+                                            }
+                                            var count2 = $('#count').val(); //for PHP and MySQL logging
+                                        </script>
+                                        <? php $score='"+count+"' ; $query="SELECT score, another_field FROM class1 WHERE score = {$score}" ; $query="SELECT score, another_field FROM class1 WHERE scope = {$scope}" ; ?>
+                                    </a>
+                                </center>
+
+                                <a name="question10">
+                                </a>
                         </td>
-
                     </tr>
-                    
                 </tbody>
-                
             </table>
-           
-        </a>
-                      
 
-        <p></p>
-        <center>
-          <a name="question10">    
-                <input type="submit" name="submitanswers" value="Submit my Answers!" onclick="checkTest()">
-
-              
-              <script>
-function checkTest ()
-    {
-            var q1 = document.getElementById("q1").value;
-       
-             var q2 = document.getElementById("q2").value;
-       
-             var q3 = document.getElementById("q3").value;
-       
-             var q4 = document.getElementById("q4").value;
-       
-             var q5 = document.getElementById("q5").value;
-       
-             var q6 = document.getElementById("q6").value;
-        
-             var q7 = document.getElementById("q7").value;
-        
-             var q8 = document.getElementById("q8").value;
-        
-             var q9 = document.getElementById("q9").value;
-        
-             var q10 = document.getElementById("q10").value;
-        
-    
-                        var count2= 0;
-                        if(q1 == 4) {
-                            count2++;
-                            
-                        }
-                        if(q2 == 16) {
-                            count2++;
-                        }
-                        if(q3 == 16) {
-                            count2++;
-                        }
-                        if(q4 == 64) {
-                            count2++;
-                        }
-                        if(q5 == 2) {
-                            count2++;
-                        }
-                        if(q6 == 12) {
-                            count2++;
-                        }
-                        if(q7 == 2) {
-                            count2++;
-                        }
-                        if(q8 == 42) {
-                            count2++;
-                        }
-                        if(q9 == 100) {
-                            count2++;
-                        }
-                        if(q10 == 192) {
-                            count2++;
-                        }
-                            alert("Your score out of 10 is: " +count2); //prints score
-                            
-    }  
-                    var count2 = $('#count').val(); //for PHP and MySQL logging
-                </script> 
-                <? php $score='"+count+"' ; $query="SELECT score, another_field FROM class1 WHERE score = {$score}" ; $query="SELECT score, another_field FROM class1 WHERE scope = {$scope}" ; ?>
-            </a>
-        </center>
-     
-                        <a name="question10">
-                        </a>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    
 
     </form>
     <small> Created by Javathunderman </small>

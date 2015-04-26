@@ -12,6 +12,7 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.js"></script>
     <script src="lib\AngularJS\angular.min.js"></script>
     <script src="lib\AngularJS\app\js\timer.js"></script>
+    <script src="apis/js-sdk/js/temboo.js">
     <script>
         angular.module('MyApp', ['timer']);
 
@@ -28,11 +29,11 @@
         }
         MyAppController.$inject = ['$scope'];
     </script>
-     <? php $time='"+scope+"' ; $query="SELECT time, another_field FROM class1 WHERE time = {$score}" ; $query="SELECT time, another_field FROM class1 WHERE time = {$time}" ; ?>
+    <? php $time='"+scope+"' ; $query="SELECT time, another_field FROM class1 WHERE time = {$score}" ; $query="SELECT time, another_field FROM class1 WHERE time = {$time}" ; ?>
     <script src="/global.js" type="text/javascript"></script>
 </head>
 
-<body ng-app="MyApp" >
+<body ng-app="MyApp">
     <a href="http://edlightened.tk/betaweb/Quizscreen.html">
         <img class="displayed" src="http://edlightened.tk/images/pic02.jpg" align:left="" alt="alt text" style="border:none;">
     </a>
@@ -77,26 +78,104 @@
                         <b><timer interval="1000">{{hours}} hour{{hoursS}}, {{minutes}} minute{{minutesS}}, {{seconds}} second{{secondsS}}.</timer></b>
 
                     </div>
-                    <a href="http://wolframalpha.com" <a>Click for Wolfram Alpha</a> 
-                    <br /> 
+                    <input type="text" id="query" align="center">
+                    <script>
+                        // Instantiate the client proxy
+                         // You may need to adjust the path to reflect the URI of your server proxy
+                        var temboo = new TembooProxy('apis/proxy-server.php');
+                        var ewuserquery = document.getElementById('query');
+                         // Add the query Choreo
+                        var queryChoreo = temboo.addChoreo('jsQuery');
+                         // Add inputs
+                        queryChoreo.setInput('Input', ewuserquery);
+                        queryChoreo.setInput('AppID', 'X8TW3T-T7WKYE8A2G');
+                         // Success callback
+                        var showResult = function(outputs, outputFilters) {
+                            // Display outputs
+                            if(outputFilters) {
+                                // Display named output filters
+                                for(var name in outputFilters) {
+                                    console.log(name + ':');
+                                    for(var item in outputs[name]) {
+                                        console.log('    ' + outputs[name][item]);
+                                    }
+                                }
+                            } else {
+                                // Display raw outputs
+                                for(var name in outputs) {
+                                    console.log(name + ': ' + outputs[name]);
+                                }
+                            }
+                        };
+                         // Error callback
+                        var showError = function(error) {
+                            if(error.type === 'DisallowedInput') {
+                                console.log(error.type + ' error: ' + error.inputName);
+                            } else {
+                                console.log(error.type + ' error: ' + error.message);
+                            }
+                        };
+                         // Run the Choreo, specifying success and error callback handlers
+                        queryChoreo.execute(showResult, showError);
+                    </script>
+                    <br />
                     <a href="http://khanacademy.org" <a>Click for Khan Academy</a>
                     <div class="content">
-                        <iframe src="http://duckduckgo.com/search.html?width=200&site=wordnik.com&prefill=Search for definitions" style="overflow:hidden;margin:0;padding:0;width:258px;height:40px;" frameborder="0"></iframe>
+                        <input type="text" id="wordquery" align="center">
 
+
+                        <script>
+                            // Instantiate the client proxy
+                             // You may need to adjust the path to reflect the URI of your server proxy
+                            var temboo = new TembooProxy('api/word-proxy-server.php');
+                            var ewwordquery = document.getElementById('wordquery');
+                             // Add the getDefinitions Choreo
+                            var getDefinitionsChoreo = temboo.addChoreo('jsGetDefinitions');
+                             // Add inputs
+                            getDefinitionsChoreo.setInput('APIKey', '5e20c0f50c875dbfc952a05b1a20723ce5497366cb5eb71ed');
+                            getDefinitionsChoreo.setInput('Word', wordquery);
+                             // Success callback
+                            var showResult = function(outputs, outputFilters) {
+                                // Display outputs
+                                if(outputFilters) {
+                                    // Display named output filters
+                                    for(var name in outputFilters) {
+                                        console.log(name + ':');
+                                        for(var item in outputs[name]) {
+                                            console.log('    ' + outputs[name][item]);
+                                        }
+                                    }
+                                } else {
+                                    // Display raw outputs
+                                    for(var name in outputs) {
+                                        console.log(name + ': ' + outputs[name]);
+                                    }
+                                }
+                            };
+                             // Error callback
+                            var showError = function(error) {
+                                if(error.type === 'DisallowedInput') {
+                                    console.log(error.type + ' error: ' + error.inputName);
+                                } else {
+                                    console.log(error.type + ' error: ' + error.message);
+                                }
+                            };
+                             // Run the Choreo, specifying success and error callback handlers
+                            getDefinitionsChoreo.execute(showResult, showError);
+                        </script>
+                        <div style="padding-top:8px;"></div>
                     </div>
-                    <div style="padding-top:8px;"></div>
+
                 </div>
+                <tbody>
+                    <tr>
+                        <td>
+                            <center>
 
-            </div>
-            <tbody>
-                <tr>
-                    <td>
-                        <center>
-
-                        </center>
-                    </td>
-                </tr>
-            </tbody>
+                            </center>
+                        </td>
+                    </tr>
+                </tbody>
         </table>
         <table style="-moz-border-radius: 12px;margin-bottom:2px;" width="95%" align="center" cellpadding="0" cellspacing="0">
             <tbody>
@@ -503,8 +582,7 @@
                                         if($('input[type="radio"][name=q10]:checked').val() == "CERN") {
                                             count3++;
                                         }
-                                                                          alert("Your score out of ten is " + count);
-                             
+                                        alert("Your score out of ten is " + count);
                                     }
                                     var count = $('#count').val();
                                 </script>

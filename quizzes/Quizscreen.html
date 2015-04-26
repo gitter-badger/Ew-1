@@ -83,49 +83,90 @@
 
                     </div>
                     <input type="text" id="query" align="center">
-                    <script>
-                        // Instantiate the client proxy
-                         // You may need to adjust the path to reflect the URI of your server proxy
-                        var temboo = new TembooProxy('apis/proxy-server.php');
-                        var ewuserquery = document.getElementById('query');
-                         // Add the query Choreo
-                        var queryChoreo = temboo.addChoreo('jsQuery');
-                         // Add inputs
-                        queryChoreo.setInput('Input', ewuserquery);
-                        queryChoreo.setInput('AppID', 'X8TW3T-T7WKYE8A2G');
-                         // Success callback
-                        var showResult = function(outputs, outputFilters) {
-                            // Display outputs
-                            if(outputFilters) {
-                                // Display named output filters
-                                for(var name in outputFilters) {
-                                    console.log(name + ':');
-                                    for(var item in outputs[name]) {
-                                        console.log('    ' + outputs[name][item]);
-                                    }
-                                }
-                            } else {
-                                // Display raw outputs
-                                for(var name in outputs) {
-                                    console.log(name + ': ' + outputs[name]);
-                                }
-                            }
-                        };
-                         // Error callback
-                        var showError = function(error) {
-                            if(error.type === 'DisallowedInput') {
-                                console.log(error.type + ' error: ' + error.inputName);
-                            } else {
-                                console.log(error.type + ' error: ' + error.message);
-                            }
-                        };
-                         // Run the Choreo, specifying success and error callback handlers
-                        queryChoreo.execute(showResult, showError);
-                    </script>
-                    <br />
-                    <a href="http://khanacademy.org" <a>Click for Khan Academy</a>
-                    <div class="content">
-                        <iframe src="http://duckduckgo.com/search.html?width=200&site=wordnik.com&prefill=Search for definitions" style="overflow:hidden;margin:0;padding:0;width:258px;height:40px;" frameborder="0"></iframe>
+<script>
+    // Instantiate the client proxy
+    // You may need to adjust the path to reflect the URI of your server proxy
+    var temboo = new TembooProxy('apis/proxy-server.php');
+    var ewuserquery = document.getElementById('query');
+    // Add the query Choreo
+    var queryChoreo = temboo.addChoreo('jsQuery');
+    // Add inputs
+    queryChoreo.setInput('Input', ewuserquery);
+    queryChoreo.setInput('AppID', 'X8TW3T-T7WKYE8A2G');
+    // Success callback
+    var showResult = function(outputs, outputFilters) {
+        // Display outputs
+        if(outputFilters) {
+            // Display named output filters
+            for(var name in outputFilters) {
+                console.log(name + ':');
+                for(var item in outputs[name]) {
+                    console.log('    ' + outputs[name][item]);
+                }
+            }
+        } else {
+            // Display raw outputs
+            for(var name in outputs) {
+                console.log(name + ': ' + outputs[name]);
+            }
+        }
+    };
+    // Error callback
+    var showError = function(error) {
+        if(error.type === 'DisallowedInput') {
+            console.log(error.type + ' error: ' + error.inputName);
+        } else {
+            console.log(error.type + ' error: ' + error.message);
+        }
+    };
+    // Run the Choreo, specifying success and error callback handlers
+    queryChoreo.execute(showResult, showError);
+</script>
+<br />
+<a href="http://khanacademy.org" <a>Click for Khan Academy</a>
+<div class="content">
+    <input type="text" id="wordquery" align="center">
+
+
+    <script>
+        // Instantiate the client proxy
+         // You may need to adjust the path to reflect the URI of your server proxy
+        var temboo = new TembooProxy('api/word-proxy-server.php');
+        var ewwordquery = document.getElementById('wordquery');
+         // Add the getDefinitions Choreo
+        var getDefinitionsChoreo = temboo.addChoreo('jsGetDefinitions');
+         // Add inputs
+        getDefinitionsChoreo.setInput('APIKey', '5e20c0f50c875dbfc952a05b1a20723ce5497366cb5eb71ed');
+        getDefinitionsChoreo.setInput('Word', wordquery);
+         // Success callback
+        var showResult = function(outputs, outputFilters) {
+            // Display outputs
+            if(outputFilters) {
+                // Display named output filters
+                for(var name in outputFilters) {
+                    console.log(name + ':');
+                    for(var item in outputs[name]) {
+                        console.log('    ' + outputs[name][item]);
+                    }
+                }
+            } else {
+                // Display raw outputs
+                for(var name in outputs) {
+                    console.log(name + ': ' + outputs[name]);
+                }
+            }
+        };
+         // Error callback
+        var showError = function(error) {
+            if(error.type === 'DisallowedInput') {
+                console.log(error.type + ' error: ' + error.inputName);
+            } else {
+                console.log(error.type + ' error: ' + error.message);
+            }
+        };
+         // Run the Choreo, specifying success and error callback handlers
+        getDefinitionsChoreo.execute(showResult, showError);
+    </script>
 
                     </div>
                     <div style="padding-top:8px;"></div>
