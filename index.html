@@ -34,11 +34,12 @@
 
     <title>Login to Edlightened</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="./src/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+       <!-- Bootstrap core CSS -->
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="./src/assets/css/bootstrap-login.css" rel="stylesheet" type="text/css">
+    <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
+
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -52,13 +53,17 @@
 
     <div class="container">
 
-      <form class="form-signin" method="post" action="api/doLogin.php">
-        <h2 class="form-signin-heading">Please sign in</h2>
+      <form class="form-signin" method="post" action="mouth/doLogin.php">
+        <h2 class="form-signin-heading">Welcome to Edlightened Web. Please sign in. </h2>
+          <br />
         <label for="inputEmail" class="sr-only">Username</label>
+          <br />
         <input type="username" id="inputEmail" class="form-control" placeholder="Username" required="" autofocus="" oldautocomplete="remove" autocomplete="off">
           <br />
         <label for="inputPassword" class="sr-only">Password</label>
         <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+          <br />
+          <br /><br /><br />
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
       </form>
 
