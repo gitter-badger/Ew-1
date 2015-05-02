@@ -4,7 +4,6 @@
 
 Edlightened is a program that helps students study/take tests online! It is being offered for free by Emposoft as part of our education program. 
 
-This repository was recently remade due to merge conflicts- this should be up and running soon like the old repo. Sorry for inconvenience. 
 
 #Requirements
 Edlightened simply requires an internet connection.
